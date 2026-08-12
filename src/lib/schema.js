@@ -32,7 +32,7 @@ export function orgNode() {
     name: site.brand,
     description: site.description,
     url: site.url + "/",
-    logo: site.url + "/images/favicon.svg",
+    logo: site.url + "/images/favicon.png",
     image: [site.url + "/images/hero.jpg", site.url + "/images/fire-damage-restoration.jpg"],
     telephone: site.phoneE164,
     priceRange: "$$",

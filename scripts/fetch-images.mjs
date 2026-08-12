@@ -30,6 +30,10 @@ const IMAGES = {
   "area-westlake.jpg": px(22485304),
   "area-trophy-club.jpg": px(19443316),
   "area-roanoke.jpg": px(6093742),
+
+  // brand assets (committed to the repo; pulled from GitHub raw at build time)
+  "logo.jpg": "https://raw.githubusercontent.com/darthanalyst/firedamagesouthlake/main/public/images/logo.jpg",
+  "favicon.png": "https://raw.githubusercontent.com/darthanalyst/firedamagesouthlake/main/public/images/favicon.png",
 };
 
 async function fetchOne(name, src) {

@@ -102,6 +102,7 @@ section{padding:70px 0}
 .brand{display:inline-flex;align-items:center;gap:11px}
 .brand:hover{text-decoration:none}
 .brand .mark{width:44px;height:44px;flex:0 0 auto}
+.brand-logo{height:48px;width:auto;display:block}
 .wordmark{font-family:var(--head);font-weight:800;font-size:1.16rem;color:var(--soot);line-height:1;
   letter-spacing:-.02em;display:flex;flex-direction:column;gap:3px}
 .wordmark b{color:var(--ember-d);font-weight:800}
@@ -317,6 +318,7 @@ section{padding:70px 0}
   .nav-call{justify-content:center;margin:8px 0 0}
   .wordmark{font-size:1.02rem}
   .brand .mark{width:40px;height:40px}
+  .brand-logo{height:40px}
   .assure,.cat-cards,.area-grid,.gallery,.steps,.footer-grid{grid-template-columns:1fr}
   .home-hero-inner{padding:56px 0 64px}
   .hero--home::after{background:linear-gradient(180deg,rgba(20,16,14,.88),rgba(20,16,14,.9)),
