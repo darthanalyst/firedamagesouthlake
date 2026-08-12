@@ -98,7 +98,7 @@ section{padding:70px 0}
 
 .site-header{position:sticky;top:0;z-index:60;background:var(--paper);
   border-bottom:1px solid var(--line);box-shadow:0 2px 18px -12px rgba(26,22,20,.4)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 22px}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 22px}
 .brand{display:inline-flex;align-items:center;gap:11px}
 .brand:hover{text-decoration:none}
 .brand .mark{width:44px;height:44px;flex:0 0 auto}
@@ -107,6 +107,7 @@ section{padding:70px 0}
 .wordmark b{color:var(--ember-d);font-weight:800}
 .wordmark small{font-family:var(--sans);font-weight:600;font-size:.62rem;letter-spacing:.13em;
   text-transform:uppercase;color:var(--muted)}
+.wm-name{white-space:nowrap}
 
 .nav-links{display:flex;align-items:center;gap:5px}
 .nav-links>a,.sub-toggle{font-family:var(--head);font-weight:600;font-size:.95rem;color:var(--soot);
@@ -314,7 +315,8 @@ section{padding:70px 0}
   .has-sub{width:100%}
   .submenu{position:static;display:flex;box-shadow:none;border:0;padding:0 0 6px 14px;min-width:0;background:transparent}
   .nav-call{justify-content:center;margin:8px 0 0}
-  .site-header{position:static}
+  .wordmark{font-size:1.02rem}
+  .brand .mark{width:40px;height:40px}
   .assure,.cat-cards,.area-grid,.gallery,.steps,.footer-grid{grid-template-columns:1fr}
   .home-hero-inner{padding:56px 0 64px}
   .hero--home::after{background:linear-gradient(180deg,rgba(20,16,14,.88),rgba(20,16,14,.9)),
