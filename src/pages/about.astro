@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }])];
+---
+<Base
+  title="About Southlake Fire Restoration | Fire &amp; Smoke Help"
+  description="About Southlake Fire Restoration, connecting Southlake, TX homeowners with local fire and smoke damage restoration help. Upfront pricing. Call 000-000-0000."
+  path="/about/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / About</div></div>
+
+  <section class="hero">
+    <div class="wrap" style="max-width:820px">
+      <span class="kicker"><svg style="width:16px;height:16px;vertical-align:-3px"><use href="#i-home"/></svg> About Us</span>
+      <h1>About Southlake Fire Restoration</h1>
+      <p class="lead">We help Southlake homeowners get fast, straightforward fire and smoke damage help from experienced local restoration crews, with upfront pricing and no pressure.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+        <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <p>A house fire is one of the most disorienting things a family can go through. In the middle of it, the last thing anyone wants is to sort through a dozen companies and sales pitches. Southlake Fire Restoration exists to make that first step simple: one call reaches an experienced local fire and smoke damage restoration crew that can assess the property, secure it, and get the cleanup and repairs moving.</p>
+      <p>Our focus is Southlake and the surrounding Northeast Tarrant and south Denton communities, including <a href="/grapevine-tx/">Grapevine</a>, <a href="/colleyville-tx/">Colleyville</a>, <a href="/keller-tx/">Keller</a>, Westlake, Trophy Club, and Roanoke. The work covers the whole arc of a fire job: <a href="/emergency-board-up-in-southlake/">emergency board-up</a>, <a href="/water-damage-restoration-in-southlake/">water extraction and drying</a>, <a href="/smoke-and-soot-removal-in-southlake/">smoke and soot removal</a>, <a href="/smoke-odor-removal-in-southlake/">odor control</a>, <a href="/contents-cleaning-pack-out-in-southlake/">contents pack-out</a>, and full <a href="/fire-damage-restoration-in-southlake/">fire damage restoration</a>.</p>
+
+      <h2>Straight Answers, No Inflated Claims</h2>
+      <p>Plenty of restoration websites lead with star ratings, badges, and awards. We would rather be useful than loud. What we can tell you honestly is this: describe the fire and the damage, and you will get an assessment, upfront pricing, and a plan before any work starts, with no obligation to move forward. If the property needs only cleanup and not a full rebuild, a local crew will say so.</p>
+      <p>We do not publish review counts or ratings we cannot verify, and we do not claim to own the trucks or the crews. The people who do the work are independent local restoration professionals. What we care about is that the first call is easy, the pricing is upfront, and the work is done in the right order so nothing gets locked in behind fresh paint.</p>
+
+      <h2>How To Reach Us</h2>
+      <p>The fastest way to get help is to call <a href={site.phoneHref}>{site.phone}</a> and describe what happened. You can also read <a href="/what-to-do-after-a-fire/">what to do after a fire</a> for a first-hour checklist, or see <a href="/services/">all services</a> and <a href="/how-it-works/">how the process works</a>.</p>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">What we help with</span><h2>Fire Restoration Services</h2></div>
+      <div class="svc-rows">
+        {serviceNav.map((s) => (
+          <a class="svc-row" href={`/${s.slug}/`}>
+            <img src={s.img} width="118" height="82" alt={`${s.label} in Southlake, TX`} loading="lazy" />
+            <span><h3>{s.label}</h3><span class="more">View service →</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Talk To a Local Restoration Crew</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Southlake, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

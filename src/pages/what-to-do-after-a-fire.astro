@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, afterFire, serviceNav } from "../data/site.js";
+import { breadcrumb, faqNode } from "../lib/schema.js";
+const faqs = [
+  { q: "Is it safe to go back into my house after a fire?", a: "Not until the fire department or a structural professional says so. Fire weakens framing, floors, and roofs, and hidden hot spots can reignite. Wait for the official all-clear, then limit how much you move around inside." },
+  { q: "Should I try to clean soot myself?", a: "It is better not to. Soot is acidic and the wrong cleaner or cloth drives it deeper and sets the stain permanently, especially on walls, stone, and upholstery. Photograph the damage, then let a local fire damage restoration crew handle cleanup. Call 000-000-0000." },
+  { q: "What should I tell my insurance company?", a: "Notify your insurer as soon as you can, document everything with photos before items are moved, and keep receipts for any emergency lodging or supplies. A local restoration crew can document the damage and coordinate the claim paperwork with your adjuster." },
+];
+const schema = [
+  breadcrumb([{ name: "Home", path: "/" }, { name: "What To Do After a Fire", path: "/what-to-do-after-a-fire/" }]),
+  faqNode(faqs),
+];
+---
+<Base
+  title="What To Do After a Fire | Southlake, TX Guide"
+  description="A step-by-step guide to what to do after a house fire in Southlake, TX: safety, protecting belongings, insurance, and what not to touch. Call 000-000-0000."
+  path="/what-to-do-after-a-fire/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / What To Do After a Fire</div></div>
+
+  <section class="hero">
+    <div class="wrap" style="max-width:820px">
+      <span class="kicker"><svg style="width:16px;height:16px;vertical-align:-3px"><use href="#i-alert"/></svg> Safety Guide</span>
+      <h1>What To Do After a Fire in Southlake, TX</h1>
+      <p class="lead">The hours right after a house fire decide how much can be saved. This guide covers what to do, what not to touch, and how to protect your belongings and your insurance claim while help is on the way.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+        <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <p>A fire is over in minutes, but the damage keeps going long after the flames are out. Soot turns acidic and etches surfaces, smoke odor works into fabric and drywall, and the water used to fight the fire soaks into the structure. What you do first matters as much as what a restoration crew does later. The most important rule is simple: keep yourself safe and protect the property, but do not start cleaning. Wiping soot or shampooing carpet with the wrong product is the fastest way to make temporary damage permanent.</p>
+      <p>Use the two lists below as your first-hour checklist. When you are ready, a local fire damage restoration crew can take it from there with <a href="/smoke-and-soot-removal-in-southlake/">smoke and soot removal</a>, <a href="/water-damage-restoration-in-southlake/">water extraction and drying</a>, and full <a href="/fire-damage-restoration-in-southlake/">fire damage restoration</a>.</p>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">Your first-hour checklist</span><h2>Do &amp; Don't After a Fire</h2></div>
+      <div class="dodont">
+        <div class="dd-card dd-do">
+          <div class="dd-head"><span class="dd-badge"><svg><use href="#i-check"/></svg></span><h3>Do</h3></div>
+          <ul class="dd-list">{afterFire.do.map((d) => <li>{d}</li>)}</ul>
+        </div>
+        <div class="dd-card dd-dont">
+          <div class="dd-head"><span class="dd-badge"><svg><use href="#i-alert"/></svg></span><h3>Don't</h3></div>
+          <ul class="dd-list">{afterFire.dont.map((d) => <li>{d}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap prose">
+      <h2>Protect Your Insurance Claim</h2>
+      <p>Before anything is moved or cleaned, photograph and video the damage room by room from a safe distance. Contact your insurance company promptly to open the claim, and keep receipts for any emergency lodging, food, or supplies, since many policies reimburse these costs. Make a written list of damaged belongings as you find them rather than trusting memory later. A local restoration crew can document the damage in the detail an adjuster needs and coordinate the paperwork so the claim moves faster.</p>
+
+      <h2>Secure the Property</h2>
+      <p>A fire often leaves broken windows, open walls, and a damaged roof. Until those are covered, weather, animals, and passers-by can add to the loss, and an insurer may expect you to prevent further damage once it is safe to do so. <a href="/emergency-board-up-in-southlake/">Emergency board-up and roof tarp service</a> closes the structure back up quickly. If soot and smoke reached the living space, keep the HVAC system off until it has been checked so soot is not pulled into untouched rooms, then plan for <a href="/smoke-odor-removal-in-southlake/">smoke odor removal</a> and <a href="/contents-cleaning-pack-out-in-southlake/">contents cleaning</a>.</p>
+
+      <h2>Trusted Outside Resources</h2>
+      <p>These organizations publish free, authoritative guidance on recovering after a fire:</p>
+      <ul>
+        <li><a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire/recovering-from-a-fire.html" target="_blank" rel="noopener">American Red Cross, Recovering From a Fire</a>: immediate steps, safety, and emotional recovery.</li>
+        <li><a href="https://www.usfa.fema.gov/prevention/home-fires/after-a-fire/" target="_blank" rel="noopener">U.S. Fire Administration (FEMA), After a Fire</a>: what to do in the days after a home fire.</li>
+        <li><a href="https://www.tdi.texas.gov/tips/how-to-handle-an-insurance-claim.html" target="_blank" rel="noopener">Texas Department of Insurance, Handling an Insurance Claim</a>: how the claims process works for Texas homeowners.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-head center"><span class="kicker">FAQ</span><h2>After a Fire, Common Questions</h2></div>
+      <div class="faq">
+        {faqs.map((f, i) => (
+          <details open={i === 0}><summary>{f.q}</summary><div class="ans"><p>{f.a}</p></div></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Ready for the Cleanup?</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Southlake, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,214 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav, areaNav, categoryCards, gallery, afterFire, processSteps } from "../data/site.js";
+import { itemListNode, faqNode } from "../lib/schema.js";
+
+const faqs = [
+  { q: "What should I do first after a fire in Southlake?", a: "Once the fire department says the structure is safe, keep movement to a minimum so soot is not ground in, photograph the damage for your claim, and call to get a local fire damage restoration crew out to assess it. Fast board-up and drying prevent a bad situation from getting worse. Call 000-000-0000 to get started." },
+  { q: "How much does fire damage restoration cost?", a: "Cost depends on how far the fire, smoke, and soot spread, how much water was used to put it out, and whether the work is cleanup only or full reconstruction. A local restoration crew assesses the property and gives upfront pricing before any work, with no obligation." },
+  { q: "Does fire damage restoration handle smoke smell too?", a: "Yes. Smoke odor is neutralized at the source with air scrubbers, thermal fogging, and hydroxyl or ozone treatment rather than masked with fragrance. Soft goods, HVAC, and hidden cavities are treated so the smell does not return weeks later." },
+  { q: "Can smoke and soot damage rooms the fire never reached?", a: "It can. Smoke and soot travel through HVAC systems, gaps, and open doorways and settle on walls, ceilings, and contents far from the origin. That is why a local crew tests adjoining rooms and maps how far the damage spread before starting cleanup." },
+  { q: "Do you work with my insurance claim?", a: "A local restoration crew documents the damage, itemizes the work, and coordinates the paperwork with your insurer so the claim moves faster. Take photos before anything is moved and keep receipts for any emergency spending." },
+  { q: "What areas around Southlake do you serve?", a: "Southlake and the surrounding Northeast Tarrant and south Denton communities, including Grapevine, Colleyville, Keller, Westlake, Trophy Club, and Roanoke. Call 000-000-0000 and describe the property to get help nearby." },
+];
+---
+<Base
+  title="Fire Damage Restoration in Southlake, TX | Smoke & Soot"
+  description="Fire and smoke damage restoration in Southlake, TX. A local crew handles soot cleanup, smoke odor, water extraction, and board-up. Call 000-000-0000."
+  path="/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify([itemListNode(serviceNav), faqNode(faqs)])} />
+
+  <section class="hero--home">
+    <div class="home-hero-media"><img src="/images/hero.jpg" width="1600" height="900" alt="Fire-damaged room interior after a house fire in Southlake, TX" /></div>
+    <div class="wrap">
+      <div class="home-hero-inner">
+        <span class="kicker"><svg style="width:16px;height:16px;vertical-align:-3px"><use href="#i-flame"/></svg> Southlake, TX · Fire &amp; Smoke Damage</span>
+        <h1>Fire Damage Restoration in <em>Southlake, TX</em></h1>
+        <p class="lead">Fire, smoke, soot, and water damage after a house fire? A local fire damage restoration crew secures the property, cleans the soot, kills the smoke odor, and rebuilds what the fire took.</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+          <span class="tapline" style="color:#D8C6B8">Upfront pricing · No obligation · {site.hoursShort}</span>
+        </div>
+        <ul class="chips">
+          <li><svg><use href="#i-flame"/></svg> Fire Damage</li>
+          <li><svg><use href="#i-smoke"/></svg> Smoke &amp; Soot</li>
+          <li><svg><use href="#i-drop"/></svg> Water Extraction</li>
+          <li><svg><use href="#i-board"/></svg> Board-Up</li>
+          <li><svg><use href="#i-spray"/></svg> Odor Removal</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-ink">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">Why Southlake homeowners call</span>
+        <h2>Fire &amp; Smoke Damage, Handled Right</h2>
+      </div>
+      <div class="assure">
+        <div class="assure-card">
+          <div class="ic"><svg><use href="#i-alert"/></svg></div>
+          <h3>Fast Response When It Counts</h3>
+          <p>Soot turns acidic and etches glass, metal, and finishes within days, and water from firefighting invites mold. A local crew moves quickly to board up, dry out, and stop the damage from spreading.</p>
+        </div>
+        <div class="assure-card">
+          <div class="ic"><svg><use href="#i-flame"/></svg></div>
+          <h3>Restoration Is All This Is</h3>
+          <p>Fire and smoke cleanup is its own trade, with soot chemistry, odor control, and structural drying that a general handyman does not handle. A local restoration crew works fire and smoke jobs, start to finish.</p>
+        </div>
+        <div class="assure-card">
+          <div class="ic"><svg><use href="#i-check"/></svg></div>
+          <h3>Upfront and No Pressure</h3>
+          <p>You get an honest read on the property and upfront pricing before any work, with no obligation. If cleanup will do without a full rebuild, a local crew tells you so.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catband">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">Where to start</span>
+        <h2>Our Fire Restoration Services</h2>
+        <p>Fire cleanup, smoke and soot removal, or water extraction after firefighting, pick a track, or call and describe what happened.</p>
+      </div>
+      <div class="cat-cards">
+        {categoryCards.map((c) => (
+          <a class="cat-card" href={`/${c.slug}/`}>
+            <img src={c.img} width="380" height="220" alt={`${c.label} in Southlake, TX`} loading="lazy" />
+            <span class="cc-body">
+              <h3>{c.label} <span class="arw">→</span></h3>
+              <p>{c.sub}</p>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">First hours matter</span>
+        <h2>After a Fire: What To Do &amp; What Not To Do</h2>
+        <p>What you do in the first hours can save belongings or set the damage permanently. Here is the short version, the <a href="/what-to-do-after-a-fire/">full guide is here</a>.</p>
+      </div>
+      <div class="dodont">
+        <div class="dd-card dd-do">
+          <div class="dd-head"><span class="dd-badge"><svg><use href="#i-check"/></svg></span><h3>Do</h3></div>
+          <ul class="dd-list">
+            {afterFire.do.map((d) => <li>{d}</li>)}
+          </ul>
+        </div>
+        <div class="dd-card dd-dont">
+          <div class="dd-head"><span class="dd-badge"><svg><use href="#i-alert"/></svg></span><h3>Don't</h3></div>
+          <ul class="dd-list">
+            {afterFire.dont.map((d) => <li>{d}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Fire restoration services</span>
+        <h2>Southlake Fire &amp; Smoke Services</h2>
+        <p>From emergency board-up to full reconstruction, tap any service for the details, or call and describe the damage.</p>
+      </div>
+      <div class="svc-rows">
+        {serviceNav.map((s) => (
+          <a class="svc-row" href={`/${s.slug}/`}>
+            <img src={s.img} width="118" height="82" alt={`${s.label} in Southlake, TX`} loading="lazy" />
+            <span>
+              <h3>{s.label}</h3>
+              <span class="more">View service →</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="kicker">Guiding you step by step</span>
+        <h2>How Fire Restoration Works</h2>
+      </div>
+      <div class="rule" style="margin-bottom:40px"><span class="spark"></span></div>
+      <div class="timeline">
+        {processSteps.map((s) => (
+          <div class="tl-step">
+            <div class="tl-num"><b>{s.n}</b></div>
+            <div class="tl-body">
+              <span class="tl-tag">Step {s.n}</span>
+              <h3>{s.label}</h3>
+              <p>{s.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style="margin-top:34px;text-align:center"><a class="btn btn-outline" href="/how-it-works/">See the full process</a></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">On the job</span><h2>Fire &amp; Smoke Restoration Work</h2><p>Soot cleanup, structural drying, board-up, contents pack-out, and odor control handled by a local restoration crew.</p></div>
+      <div class="gallery">
+        {gallery.map((g) => (
+          <figure><img src={g.img} width="380" height="230" alt={g.alt} loading="lazy" /></figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap prose">
+      <span class="kicker">Fire &amp; smoke damage</span>
+      <h2>Fire Damage Restoration Built for Southlake Homes</h2>
+      <p>Fire damage restoration in Southlake is about far more than sweeping up char and painting over a stain. A house fire leaves behind four separate problems at once, and each one keeps causing damage until it is dealt with. There is the fire and structural damage itself, the soot and smoke residue that coats surfaces and hides in cavities, the smoke odor that works into every soft surface in the home, and the water and humidity left behind from putting the fire out. A local fire damage restoration crew treats all four together, because fixing one and ignoring the others leaves the home damaged and the family living with the smell.</p>
+      <p>Southlake homes raise the stakes. Much of the city is made up of large, two- and three-story custom homes with open floor plans and big, complex HVAC systems. That is exactly the kind of house where smoke and soot travel farthest. A contained kitchen or fireplace fire in one wing can push soot through the ductwork and settle it on walls, ceilings, and belongings in rooms the flames never touched. The first job on any Southlake fire is to test the adjoining rooms and the HVAC and find out how far the damage actually reached, from Timarron and Carillon to the neighborhoods around Southlake Town Square.</p>
+      <p>Soot is not just dirt, and that is why cleaning it wrong makes it permanent. Fresh soot is acidic and, left in place, it etches glass, discolors metal, and eats into grout, stone, and finishes within days. Different fires leave different residue: a kitchen grease fire leaves a sticky film, a fast-burning paper or wood fire leaves a dry powder, and a smoldering plastic or electrical fire leaves a smeary, corrosive coating that needs its own approach. Wiping the wrong residue with a household cleaner drives it deeper and sets the stain for good. That is the single biggest reason the <a href="/what-to-do-after-a-fire/">first hours after a fire</a> should be about protecting the property, not scrubbing it.</p>
+      <p>The work runs in a clear order. First a local crew secures the structure with <a href="/emergency-board-up-in-southlake/">emergency board-up and roof tarping</a> so weather, animals, and anyone passing by cannot cause more loss. Next comes <a href="/water-damage-restoration-in-southlake/">water damage restoration</a>, extracting the water firefighters used and drying the structure with commercial air movers and dehumidifiers before mold can start. Then the crew handles <a href="/smoke-and-soot-removal-in-southlake/">smoke and soot removal</a> from walls, ceilings, and contents, followed by <a href="/smoke-odor-removal-in-southlake/">smoke odor removal</a> that neutralizes the smell at the source instead of masking it. Valuable or heavily affected belongings can go out for <a href="/contents-cleaning-pack-out-in-southlake/">contents cleaning and pack-out</a>, and finally the home is rebuilt through full <a href="/fire-damage-restoration-in-southlake/">fire damage restoration</a> and repairs.</p>
+      <p>North Texas adds its own patterns. Spring storms bring the lightning strikes and power surges that start attic and electrical fires, dry summers raise the risk of grass and brush fires reaching detached structures and fence lines, and year-round the mix of fireplaces, outdoor kitchens, and grills that come with larger Southlake and <a href="/colleyville-tx/">Colleyville</a> homes all add ignition sources. A local crew that works fires across <a href="/grapevine-tx/">Grapevine</a>, <a href="/keller-tx/">Keller</a>, Westlake, Trophy Club, and Roanoke sees these situations regularly and knows how the damage tends to move through a home here.</p>
+      <p>Most of all, fire restoration is about getting a family back into a safe, clean home without cutting corners that come back later. That means documenting the damage for the insurance claim, giving upfront pricing before the work starts, and being straight about what needs full restoration versus what only needs cleaning. A quick coat of paint over smoke-stained drywall traps odor in the wall and it returns with the first warm, humid week. Doing it right the first time, in the right order, is what a local fire damage restoration crew brings to every call. See <a href="/services/">all fire restoration services</a> or call to describe what happened.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">Service areas</span><h2>Areas We Serve Near Southlake</h2><p>Fire and smoke damage restoration across Southlake and the surrounding communities.</p></div>
+      <div class="area-grid">
+        {areaNav.map((a) => (
+          <div class="area-card"><h3>{a.label.replace(', TX','')}</h3><p>Fire, smoke, soot, and water damage restoration across {a.label.replace(', TX','')} and nearby.</p><a class="more" href={`/${a.slug}/`}>{a.label.replace(', TX','')} fire restoration →</a></div>
+        ))}
+      </div>
+      <div style="margin-top:34px;text-align:center"><a class="btn btn-outline" href="/service-areas/">See all service areas</a></div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap" style="max-width:860px">
+      <div class="section-head center"><span class="kicker">FAQ</span><h2>Southlake Fire Restoration Questions</h2></div>
+      <div class="faq">
+        {faqs.map((f, i) => (
+          <details open={i === 0}><summary>{f.q}</summary><div class="ans"><p>{f.a}</p></div></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Get Fire &amp; Smoke Damage Handled</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Southlake, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:22px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,145 @@
+---
+import { site, serviceNav, areaNav } from "../data/site.js";
+import { orgNode, websiteNode } from "../lib/schema.js";
+const { title, description, path = "/", canonical } = Astro.props;
+const canon = canonical || site.url + path;
+const sitewide = [orgNode(), websiteNode()];
+const year = new Date().getFullYear();
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canon} />
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/images/favicon.svg" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canon} />
+<meta property="og:site_name" content={site.brand} />
+<meta property="og:image" content={site.url + "/images/og.jpg"} />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json" set:html={JSON.stringify(sitewide)} />
+<slot name="head" />
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M9.5 20v-5h5v5"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V7l7-4 7 4v14"/><path d="M17 11h4v10M3 21h18"/><path d="M7 9v0M7 13v0M7 17v0M13 9v0M13 13v0M13 17v0"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+  <symbol id="i-smoke" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h13a3 3 0 0 0 0-6h-.5"/><path d="M7 14H6a3 3 0 0 1 0-6c.2 0 .4 0 .6.1"/><path d="M8 8a3.5 3.5 0 0 1 6.9-.8"/><path d="M4 22h16"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M3 15h18M9 4v16M15 4v16"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-spray" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V4h5v7"/><path d="M9 11h5a2 2 0 0 1 2 2v7a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-7a2 2 0 0 1 2-2z"/><path d="M16 3h2M16 6h3M19 9h1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-thermometer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></symbol>
+</defs></svg>
+
+<div class="utility"><div class="wrap">
+  <span class="hours"><svg><use href="#i-pin"/></svg> {site.city}, {site.region} · {site.hoursShort}</span>
+  <span>Call <a href={site.phoneHref}>{site.phone}</a></span>
+</div></div>
+
+<header class="site-header">
+  <nav class="nav wrap">
+    <a href="/" class="brand" aria-label={site.brand + " home"}>
+      <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="12" fill="#1A1614"/>
+        <path d="M24 9c1.6 4.2 4.7 6.6 6.9 9.2 2.2 2.6 3.6 5.3 3.6 8.3a10.5 10.5 0 0 1-21 0c0-1.9.6-3.6 1.6-5 .3 1.9 1.7 3.2 3.4 3.2 1.9 0 3.3-1.5 3.3-3.6 0-1.9-1-3-1.5-4.4C23 16 23.4 12.8 24 9z" fill="url(#emg)"/>
+        <defs><linearGradient id="emg" x1="24" y1="9" x2="24" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#F6883C"/><stop offset="1" stop-color="#B7280F"/></linearGradient></defs>
+      </svg>
+      <span class="wordmark">Southlake <b>Fire</b> Restoration<small>Fire &amp; Smoke Damage · Southlake, TX</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')"><svg><use href="#i-menu"/></svg></button>
+    <div class="nav-links" id="nav">
+      <a href="/">Home</a>
+      <div class="has-sub" tabindex="0">
+        <a href="/services/" class="sub-toggle">Services ▾</a>
+        <div class="submenu">
+          {serviceNav.map((s) => <a href={`/${s.slug}/`}>{s.label}</a>)}
+        </div>
+      </div>
+      <div class="has-sub" tabindex="0">
+        <a href="/service-areas/" class="sub-toggle">Service Areas ▾</a>
+        <div class="submenu">
+          <a href="/service-areas/">All Areas Served</a>
+          {areaNav.map((a) => <a href={`/${a.slug}/`}>{a.label}</a>)}
+        </div>
+      </div>
+      <a href="/what-to-do-after-a-fire/">After a Fire</a>
+      <a href="/how-it-works/">How It Works</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a class="nav-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> {site.phone}</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <slot />
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand-mark">
+        <svg class="mark" viewBox="0 0 48 48" aria-hidden="true">
+          <rect width="48" height="48" rx="12" fill="#241E1B"/>
+          <path d="M24 9c1.6 4.2 4.7 6.6 6.9 9.2 2.2 2.6 3.6 5.3 3.6 8.3a10.5 10.5 0 0 1-21 0c0-1.9.6-3.6 1.6-5 .3 1.9 1.7 3.2 3.4 3.2 1.9 0 3.3-1.5 3.3-3.6 0-1.9-1-3-1.5-4.4C23 16 23.4 12.8 24 9z" fill="url(#emgf)"/>
+          <defs><linearGradient id="emgf" x1="24" y1="9" x2="24" y2="38" gradientUnits="userSpaceOnUse"><stop stop-color="#F6883C"/><stop offset="1" stop-color="#B7280F"/></linearGradient></defs>
+        </svg>
+        <span class="wordmark">Southlake <b>Fire</b> Restoration<small>Fire &amp; Smoke Damage · Southlake, TX</small></span>
+      </div>
+      <p>Fire and smoke damage restoration across Southlake and the surrounding Northeast Tarrant communities, soot cleanup, smoke odor removal, water extraction, board-up, and full repairs.</p>
+      <a class="footer-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> {site.phone}</a>
+      <p style="margin-top:2px">{site.hoursShort} · {site.city}, {site.region}</p>
+      <a class="btn btn-outline" href="/contact/">Contact Us</a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        {serviceNav.map((s) => <li><a href={`/${s.slug}/`}>{s.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h4>Service Areas</h4>
+      <ul>
+        <li><a href="/service-areas/">All Areas Served</a></li>
+        {areaNav.map((a) => <li><a href={`/${a.slug}/`}>{a.label}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul>
+        <li><a href="/services/">All Services</a></li>
+        <li><a href="/what-to-do-after-a-fire/">What To Do After a Fire</a></li>
+        <li><a href="/how-it-works/">How It Works</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="wrap">
+    <p class="disclaimer">{site.brand} is a free service to assist homeowners in connecting with local service providers. All contractors/providers are independent and {site.brand} does not warrant or guarantee any work performed. It is the responsibility of the homeowner to verify that the hired contractor furnishes the necessary license and insurance required for the work being performed. All persons depicted in a photo or video are actors or models and not contractors listed on {site.brand}.</p>
+    <div class="copyright">© {year} {site.brand}. All rights reserved.</div>
+  </div></div>
+</footer>
+
+<a class="mobile-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Tap to Call · {site.phone}</a>
+
+</body>
+</html>

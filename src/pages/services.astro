@@ -1,0 +1,70 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav, processSteps } from "../data/site.js";
+import { breadcrumb, itemListNode } from "../lib/schema.js";
+const schema = [
+  itemListNode(serviceNav),
+  breadcrumb([{ name: "Home", path: "/" }, { name: "Services", path: "/services/" }]),
+];
+---
+<Base
+  title="Fire &amp; Smoke Restoration Services in Southlake, TX"
+  description="Fire damage restoration services in Southlake, TX: soot cleanup, smoke odor removal, water extraction, board-up, and pack-out. Call 000-000-0000."
+  path="/services/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / Services</div></div>
+
+  <section class="hero">
+    <div class="wrap" style="max-width:820px">
+      <span class="kicker"><svg style="width:16px;height:16px;vertical-align:-3px"><use href="#i-flame"/></svg> Fire Restoration Services</span>
+      <h1>Fire &amp; Smoke Damage Restoration in Southlake, TX</h1>
+      <p class="lead">A house fire leaves fire, smoke, soot, and water damage all at once. A local fire damage restoration crew handles every part of the job, from securing the property to the final repairs. Explore each service below, or call and describe what happened.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+        <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cat-cards">
+        {serviceNav.map((s) => (
+          <a class="cat-card" href={`/${s.slug}/`}>
+            <img src={s.img} width="380" height="220" alt={`${s.label} in Southlake, TX`} loading="lazy" />
+            <span class="cc-body">
+              <h3 style="font-size:1.12rem">{s.label} <span class="arw">→</span></h3>
+              <p>View the {s.label.toLowerCase()} details for Southlake and nearby.</p>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">Guiding you step by step</span><h2>How the Work Flows</h2></div>
+      <div class="rule" style="margin-bottom:40px"><span class="spark"></span></div>
+      <div class="timeline">
+        {processSteps.map((s) => (
+          <div class="tl-step">
+            <div class="tl-num"><b>{s.n}</b></div>
+            <div class="tl-body"><span class="tl-tag">Step {s.n}</span><h3>{s.label}</h3><p>{s.body}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Fire or Smoke Damage in Southlake?</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Southlake, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

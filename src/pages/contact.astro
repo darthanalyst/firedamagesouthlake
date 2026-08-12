@@ -1,0 +1,76 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, serviceNav } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }])];
+---
+<Base
+  title="Contact | Fire Damage Restoration in Southlake, TX"
+  description="Contact for fire and smoke damage restoration in Southlake, TX. Call 000-000-0000 to describe the damage and get upfront pricing with no obligation."
+  path="/contact/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / Contact</div></div>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="kicker"><svg style="width:16px;height:16px;vertical-align:-3px"><use href="#i-phone"/></svg> Contact</span>
+        <h1>Call for Fire &amp; Smoke Damage Help</h1>
+        <p class="lead">The fastest way to get help after a fire in Southlake is to call and describe what happened. A local fire damage restoration crew can assess the property, secure it, and give upfront pricing with no obligation.</p>
+        <div class="hero-cta">
+          <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+        </div>
+        <ul class="creds">
+          <li><svg><use href="#i-clock"/></svg> {site.hoursShort}</li>
+          <li><svg><use href="#i-pin"/></svg> Southlake &amp; surrounding towns</li>
+          <li><svg><use href="#i-check"/></svg> Upfront pricing, no obligation</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <div class="panel" style="height:100%">
+          <h3>What To Have Ready</h3>
+          <p style="margin-bottom:14px">When you call, it helps to have a few details on hand so a local crew can respond quickly:</p>
+          <ul class="dd-list" style="margin-bottom:18px">
+            <li style="color:#F3E9DF">The address and type of property affected</li>
+            <li style="color:#F3E9DF">What burned and roughly how far the smoke spread</li>
+            <li style="color:#F3E9DF">Whether the fire department has cleared the structure</li>
+            <li style="color:#F3E9DF">Whether there is standing water from firefighting</li>
+          </ul>
+          <a class="btn btn-call" href={site.phoneHref} style="width:100%;justify-content:center"><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap prose" style="max-width:820px">
+      <h2>Serving Southlake &amp; Nearby</h2>
+      <p>Help is available across Southlake and the surrounding communities, including <a href="/grapevine-tx/">Grapevine</a>, <a href="/colleyville-tx/">Colleyville</a>, <a href="/keller-tx/">Keller</a>, <a href="/westlake-tx/">Westlake</a>, <a href="/trophy-club-tx/">Trophy Club</a>, and <a href="/roanoke-tx/">Roanoke</a>. Not sure where to start? Read <a href="/what-to-do-after-a-fire/">what to do after a fire</a> for a first-hour checklist, then call when you are ready.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">Services</span><h2>What We Handle</h2></div>
+      <div class="svc-rows">
+        {serviceNav.map((s) => (
+          <a class="svc-row" href={`/${s.slug}/`}>
+            <img src={s.img} width="118" height="82" alt={`${s.label} in Southlake, TX`} loading="lazy" />
+            <span><h3>{s.label}</h3><span class="more">View service →</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Fire or Smoke Damage in Southlake?</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Southlake, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, processSteps, serviceNav } from "../data/site.js";
+import { breadcrumb, faqNode } from "../lib/schema.js";
+const faqs = [
+  { q: "How long does fire damage restoration take?", a: "It depends on how far the fire, smoke, and water spread. Emergency board-up and drying happen right away, soot cleanup and odor treatment take days, and full reconstruction can take weeks. A local crew gives you a realistic timeline after assessing the property." },
+  { q: "What happens first when I call?", a: "You describe what happened and where, and a local fire damage restoration crew heads out to assess the property, secure it, and begin drying. The first visit is about stopping further damage and mapping the full scope. Call 000-000-0000 to start." },
+  { q: "Do I need to move out during restoration?", a: "Sometimes. If the fire affected the kitchen, main systems, or a large area, staying may not be safe or practical. A local crew will tell you honestly what to expect so you can plan with your insurer." },
+];
+const schema = [
+  breadcrumb([{ name: "Home", path: "/" }, { name: "How It Works", path: "/how-it-works/" }]),
+  faqNode(faqs),
+];
+---
+<Base
+  title="How Fire Damage Restoration Works | Southlake, TX"
+  description="How fire damage restoration works in Southlake, TX: assessment, board-up, water removal, soot cleanup, odor control, and repairs. Call 000-000-0000."
+  path="/how-it-works/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / How It Works</div></div>
+
+  <section class="hero">
+    <div class="wrap" style="max-width:820px">
+      <span class="kicker"><svg style="width:16px;height:16px;vertical-align:-3px"><use href="#i-clock"/></svg> The Process</span>
+      <h1>How Fire Damage Restoration Works</h1>
+      <p class="lead">From the first call to the final repair, here is how a local fire damage restoration crew takes a Southlake property from fire and smoke damage back to pre-fire condition, in the right order so nothing gets locked in.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+        <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="rule" style="margin-bottom:44px"><span class="spark"></span></div>
+      <div class="timeline">
+        {processSteps.map((s) => (
+          <div class="tl-step">
+            <div class="tl-num"><b>{s.n}</b></div>
+            <div class="tl-body"><span class="tl-tag">Step {s.n}</span><h3>{s.label}</h3><p>{s.body}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap prose">
+      <span class="kicker">Why the order matters</span>
+      <h2>Why Fire Restoration Follows a Sequence</h2>
+      <p>Every step depends on the one before it. Securing the structure first with board-up and roof tarp keeps weather and intruders from adding loss while the rest of the work is planned. Removing water and drying the structure comes before soot cleanup because trapped moisture breeds mold within a day or two and undoes any cleaning done over it. Soot has to be removed before odor treatment, because the residue is the source of much of the smell. And reconstruction comes last, once the home is clean, dry, and odor-free, so new drywall and paint are not sealing damage inside the walls.</p>
+      <p>Skipping or reordering steps is the most common way a fire job goes wrong. Painting over smoke-stained drywall traps odor that returns with the first humid week. Cleaning soot before the water is dry leaves moisture behind the finish. A local fire damage restoration crew keeps the sequence intact, documents each stage for your insurance claim, and gives upfront pricing before the work begins. Explore the individual services below to see how each stage is handled.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">The services behind each step</span><h2>Fire Restoration Services</h2></div>
+      <div class="svc-rows">
+        {serviceNav.map((s) => (
+          <a class="svc-row" href={`/${s.slug}/`}>
+            <img src={s.img} width="118" height="82" alt={`${s.label} in Southlake, TX`} loading="lazy" />
+            <span><h3>{s.label}</h3><span class="more">View service →</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap" style="max-width:820px">
+      <div class="section-head center"><span class="kicker">FAQ</span><h2>Process Questions</h2></div>
+      <div class="faq">
+        {faqs.map((f, i) => (
+          <details open={i === 0}><summary>{f.q}</summary><div class="ans"><p>{f.a}</p></div></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Start With One Call</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Southlake, TX · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,62 @@
+---
+import Base from "../layouts/Base.astro";
+import { site, areaNav, serviceNav } from "../data/site.js";
+import { breadcrumb } from "../lib/schema.js";
+const schema = [breadcrumb([{ name: "Home", path: "/" }, { name: "Service Areas", path: "/service-areas/" }])];
+---
+<Base
+  title="Fire Damage Restoration Service Areas | Southlake, TX"
+  description="Fire and smoke damage restoration serving Southlake, Grapevine, Colleyville, Keller, Westlake, Trophy Club, and Roanoke, TX. Call 000-000-0000."
+  path="/service-areas/"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
+
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> / Service Areas</div></div>
+
+  <section class="hero">
+    <div class="wrap" style="max-width:820px">
+      <span class="kicker"><svg style="width:16px;height:16px;vertical-align:-3px"><use href="#i-pin"/></svg> Areas Served</span>
+      <h1>Fire Damage Restoration Near Southlake, TX</h1>
+      <p class="lead">Based in Southlake and serving the surrounding Northeast Tarrant and south Denton communities. A local fire damage restoration crew responds across the towns below for fire, smoke, soot, and water damage.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call {site.phone}</a>
+        <span class="tapline">Upfront pricing · No obligation · {site.hoursShort}</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">Communities</span><h2>Southlake &amp; Nearby Towns</h2></div>
+      <div class="area-grid">
+        <div class="area-card"><h3>Southlake</h3><p>Our home base, fire, smoke, soot, and water damage restoration across Southlake, TX and its neighborhoods.</p><a class="more" href="/fire-damage-restoration-in-southlake/">Southlake fire restoration →</a></div>
+        {areaNav.map((a) => (
+          <div class="area-card"><h3>{a.label.replace(', TX','')}</h3><p>Fire and smoke damage restoration across {a.label.replace(', TX','')} and nearby.</p><a class="more" href={`/${a.slug}/`}>{a.label.replace(', TX','')} fire restoration →</a></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-paper">
+    <div class="wrap">
+      <div class="section-head center"><span class="kicker">What we handle</span><h2>Services in Every Area</h2></div>
+      <div class="svc-rows">
+        {serviceNav.map((s) => (
+          <a class="svc-row" href={`/${s.slug}/`}>
+            <img src={s.img} width="118" height="82" alt={`${s.label} near Southlake, TX`} loading="lazy" />
+            <span><h3>{s.label}</h3><span class="more">View service →</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="callband">
+    <div class="wrap">
+      <h2>Fire &amp; Smoke Damage Help Nearby</h2>
+      <div class="num"><a href={site.phoneHref}>{site.phone}</a></div>
+      <p>{site.hoursShort} · Southlake &amp; surrounding towns · upfront pricing, no obligation</p>
+      <div style="margin-top:18px"><a class="btn btn-ghost" href={site.phoneHref}><svg><use href="#i-phone"/></svg> Call Now</a></div>
+    </div>
+  </section>
+</Base>
